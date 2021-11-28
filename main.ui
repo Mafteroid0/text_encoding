@@ -13,15 +13,28 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(17, 19, 46, 255), stop:1 rgba(28, 32, 79, 255));</string>
+  </property>
+  <property name="animated">
+   <bool>true</bool>
+  </property>
+  <property name="dockOptions">
+   <set>QMainWindow::AllowNestedDocks|QMainWindow::AllowTabbedDocks|QMainWindow::AnimatedDocks</set>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QComboBox" name="method_list">
     <property name="geometry">
      <rect>
-      <x>540</x>
-      <y>10</y>
-      <width>131</width>
-      <height>31</height>
+      <x>500</x>
+      <y>70</y>
+      <width>171</width>
+      <height>51</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(169, 90, 242, 255), stop:1 rgba(125, 105, 234, 255));
+color: rgb(255, 255, 255);font: 75 12pt &quot;Anonymous Pro Minus&quot;;</string>
     </property>
     <item>
      <property name="text">
@@ -47,11 +60,14 @@
    <widget class="QPushButton" name="mode">
     <property name="geometry">
      <rect>
-      <x>540</x>
-      <y>90</y>
-      <width>131</width>
-      <height>31</height>
+      <x>500</x>
+      <y>10</y>
+      <width>171</width>
+      <height>51</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(169, 90, 242, 255), stop:1 rgba(125, 105, 234, 255));color: rgb(255, 255, 255);font: 75 12pt &quot;Anonymous Pro Minus&quot;;</string>
     </property>
     <property name="text">
      <string>Режим: Шифрование</string>
@@ -60,11 +76,15 @@
    <widget class="QPushButton" name="do_2">
     <property name="geometry">
      <rect>
-      <x>410</x>
-      <y>160</y>
-      <width>101</width>
-      <height>31</height>
+      <x>510</x>
+      <y>260</y>
+      <width>161</width>
+      <height>51</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(169, 90, 242, 255), stop:1 rgba(125, 105, 234, 255));color: rgb(255, 255, 255);
+font: 75 12pt &quot;Anonymous Pro Minus&quot;;</string>
     </property>
     <property name="text">
      <string>DO</string>
@@ -76,18 +96,24 @@
       <x>10</x>
       <y>30</y>
       <width>381</width>
-      <height>31</height>
+      <height>41</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(169, 90, 242, 255), stop:1 rgba(125, 105, 234, 255));color: rgb(255, 255, 255);font: 75 12pt &quot;Anonymous Pro Minus&quot;;</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="output_text">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>110</y>
+      <y>120</y>
       <width>381</width>
-      <height>31</height>
+      <height>41</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 12pt &quot;Anonymous Pro Minus&quot;;color: rgb(255, 255, 255);background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(169, 90, 242, 255), stop:1 rgba(125, 105, 234, 255));</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
@@ -95,9 +121,12 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>101</width>
+      <width>161</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 12pt &quot;Anonymous Pro Minus&quot;;color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>Входящий текст</string>
@@ -108,9 +137,12 @@
      <rect>
       <x>10</x>
       <y>90</y>
-      <width>101</width>
+      <width>171</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 12pt &quot;Anonymous Pro Minus&quot;;color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>Выходящий текст</string>
@@ -120,20 +152,26 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>170</y>
-      <width>141</width>
-      <height>31</height>
+      <y>200</y>
+      <width>161</width>
+      <height>41</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 12pt &quot;Anonymous Pro Minus&quot;;background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(169, 90, 242, 255), stop:1 rgba(125, 105, 234, 255));color: rgb(255, 255, 255);</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>150</y>
-      <width>91</width>
+      <x>20</x>
+      <y>170</y>
+      <width>151</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 12pt &quot;Anonymous Pro Minus&quot;;color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>Доп. параметры</string>
@@ -142,11 +180,14 @@
    <widget class="QRadioButton" name="ru_radio">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>210</y>
-      <width>82</width>
+      <x>20</x>
+      <y>260</y>
+      <width>101</width>
       <height>21</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 12pt &quot;Anonymous Pro Minus&quot;;color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>Русский</string>
@@ -155,11 +196,14 @@
    <widget class="QRadioButton" name="en_radio">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>240</y>
-      <width>82</width>
+      <x>20</x>
+      <y>290</y>
+      <width>121</width>
       <height>17</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 12pt &quot;Anonymous Pro Minus&quot;;color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>Английский</string>
@@ -168,14 +212,34 @@
    <widget class="QPushButton" name="create_key_button">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>280</y>
-      <width>141</width>
-      <height>41</height>
+      <x>510</x>
+      <y>200</y>
+      <width>161</width>
+      <height>51</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(169, 90, 242, 255), stop:1 rgba(125, 105, 234, 255));color: rgb(255, 255, 255);font: 75 12pt &quot;Anonymous Pro Minus&quot;;</string>
     </property>
     <property name="text">
      <string>Создать ключи</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>120</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(169, 90, 242, 255), stop:1 rgba(125, 105, 234, 255));
+color: rgb(255, 255, 255);font: 75 18pt &quot;Anonymous Pro Minus&quot;;</string>
+    </property>
+    <property name="text">
+     <string>⎘</string>
     </property>
    </widget>
   </widget>

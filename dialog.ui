@@ -6,21 +6,27 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>476</width>
-    <height>214</height>
+    <width>539</width>
+    <height>213</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(17, 19, 46, 255), stop:1 rgba(28, 32, 79, 255));</string>
   </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>91</width>
+     <width>131</width>
      <height>16</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 75 12pt &quot;Anonymous Pro Minus&quot;;color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
     <string>Создать ключи</string>
@@ -29,11 +35,15 @@
   <widget class="QComboBox" name="keysize">
    <property name="geometry">
     <rect>
-     <x>360</x>
+     <x>400</x>
      <y>20</y>
      <width>69</width>
      <height>22</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(169, 90, 242, 255), stop:1 rgba(125, 105, 234, 255));
+color: rgb(255, 255, 255);font: 75 12pt &quot;Anonymous Pro Minus&quot;;</string>
    </property>
    <item>
     <property name="text">
@@ -54,37 +64,30 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>250</x>
+     <x>220</x>
      <y>20</y>
-     <width>111</width>
+     <width>171</width>
      <height>20</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 75 12pt &quot;Anonymous Pro Minus&quot;;color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
     <string>Размер ключа (бит)</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="folder_open_button">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>130</y>
-     <width>151</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Открыть папку с ключами</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="time_gen">
    <property name="geometry">
     <rect>
-     <x>230</x>
+     <x>220</x>
      <y>80</y>
-     <width>231</width>
+     <width>291</width>
      <height>21</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 75 10pt &quot;Anonymous Pro Minus&quot;;color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
     <string>Среднее время генерации ключей: 0.11 сек</string>
@@ -93,11 +96,14 @@
   <widget class="QLabel" name="max_sim">
    <property name="geometry">
     <rect>
-     <x>230</x>
+     <x>220</x>
      <y>50</y>
-     <width>231</width>
+     <width>281</width>
      <height>21</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 75 10pt &quot;Anonymous Pro Minus&quot;;color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
     <string>Максимальный размер текста: 43 символов </string>
@@ -107,13 +113,32 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>90</y>
-     <width>131</width>
-     <height>31</height>
+     <y>50</y>
+     <width>191</width>
+     <height>51</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(169, 90, 242, 255), stop:1 rgba(125, 105, 234, 255));color: rgb(255, 255, 255);font: 75 12pt &quot;Anonymous Pro Minus&quot;;</string>
    </property>
    <property name="text">
     <string>Сгенерировать ключи</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="folder_open_button">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>140</y>
+     <width>221</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(169, 90, 242, 255), stop:1 rgba(125, 105, 234, 255));color: rgb(255, 255, 255);font: 75 12pt &quot;Anonymous Pro Minus&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Открыть папку с ключами</string>
    </property>
   </widget>
  </widget>
