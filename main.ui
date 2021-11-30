@@ -225,7 +225,7 @@ font: 75 12pt &quot;Anonymous Pro Minus&quot;;</string>
      <string>Создать ключи</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="copyButton">
     <property name="geometry">
      <rect>
       <x>400</x>
@@ -240,6 +240,39 @@ color: rgb(255, 255, 255);font: 75 18pt &quot;Anonymous Pro Minus&quot;;</string
     </property>
     <property name="text">
      <string>⎘</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>250</y>
+      <width>151</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 12pt &quot;Anonymous Pro Minus&quot;;color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>Или</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="takeff">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>280</y>
+      <width>161</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(169, 90, 242, 255), stop:1 rgba(125, 105, 234, 255));color: rgb(255, 255, 255);
+font: 75 12pt &quot;Anonymous Pro Minus&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Взять из файла</string>
     </property>
    </widget>
   </widget>

@@ -1,17 +1,19 @@
 import sys
 import os
 import bit
-import rsa
+import pyperclip
 from PyQt5 import uic
 import vizer
-from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QLineEdit, QDialog
+from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QLineEdit, QDialog, QFileDialog
 import rsacode1
+import rsa
 print("started")
 
 class MyWidget(QMainWindow):
     def __init__(self):
         super().__init__()
         uic.loadUi('main.ui', self)  # Загружаем дизайн
+        self.tocopy = ""
         self.do_2.clicked.connect(self.done)
         self.lang = "rus"
         self.key = 1
@@ -28,6 +30,12 @@ class MyWidget(QMainWindow):
         self.method_list.setCurrentIndex(0)
         self.create_key_button.hide()
         self.create_key_button.clicked.connect(self.open_dialog)
+        self.copyButton.clicked.connect(self.do_a_copy)
+        self.label_4.hide()
+        self.label_4.setText("или")
+        self.takeff.hide()
+        self.takeff.clicked.connect(self.takeFromFile)
+
 
     def set_ru_lang(self):
         self.lang = "rus"
@@ -42,18 +50,22 @@ class MyWidget(QMainWindow):
     def list_tapped(self):
         if self.method_list.currentIndex() == 0:
             self.ru_radio.hide()
+            self.takeff.hide()
             self.en_radio.hide()
             self.keys.show()
             self.label_3.show()
             self.label_3.setText("Сдвиг:")
             self.keys.setText("2")
             self.create_key_button.hide()
+            self.label_4.hide()
 
         elif self.method_list.currentIndex() == 1:
             self.ru_radio.show()
             self.en_radio.show()
             self.keys.show()
             self.label_3.show()
+            self.takeff.hide()
+            self.label_4.hide()
             self.label_3.setText("Ключ:")
             if self.lang == "eng":
                 self.keys.setText("dog")
@@ -64,9 +76,13 @@ class MyWidget(QMainWindow):
         elif self.method_list.currentIndex() == 2:
             self.ru_radio.hide()
             self.en_radio.hide()
-            self.label_3.hide()
-            self.keys.hide()
+            self.label_3.show()
+            self.label_3.setText("Ключ:")
+            self.takeff.show()
+            self.keys.setText("")
+            self.keys.show()
             self.create_key_button.show()
+            self.label_4.show()
 
         elif self.method_list.currentIndex() == 3:
             self.ru_radio.hide()
@@ -74,6 +90,8 @@ class MyWidget(QMainWindow):
             self.label_3.hide()
             self.keys.hide()
             self.create_key_button.hide()
+            self.label_4.hide()
+            self.takeff.hide()
 
     def open_dialog(self):
         ex1 = Dialog(parent=self)
@@ -111,6 +129,8 @@ class MyWidget(QMainWindow):
                     else:
                         res += c
             self.output_text.setText(res)
+            self.tocopy = res
+
         elif self.method_list.currentIndex() == 1:
             if self.lang == "eng":
                 self.lang = 'abcdefghijklmnopqrstuvwxyz'
@@ -120,22 +140,28 @@ class MyWidget(QMainWindow):
             keyword = self.keys.text().lower()
             if self.key == 1:
                 self.output_text.setText(vizer.viz(text, keyword, self.lang))
+                self.tocopy = vizer.viz(text, keyword, self.lang)
             else:
                 self.output_text.setText(vizer.viz_enc(text, keyword, self.lang))
+                self.tocopy = vizer.viz_enc(text, keyword, self.lang)
 
         elif self.method_list.currentIndex() == 2:
             if self.key == 1:
-                self.output_text.setText(rsacode1.rsa_encode_p(self.input_text.text()))
+                self.tocopy = rsacode1.rsa_encode_p(self.input_text.text())
+                self.output_text.setText(self.tocopy)
             else:
                 rsacode1.rsa_decode_p(self.input_text.text())
-                self.output_text.setText(rsacode1.rsa_decode_p(self.input_text.text()))
+                self.tocopy = rsacode1.rsa_decode_p(self.input_text.text())
+                self.output_text.setText(self.tocopy)
 
         elif self.method_list.currentIndex() == 3:
             if self.key == 1:
                 self.output_text.setText(bit.text_to_bits(self.input_text.text()))
+                self.tocopy = bit.text_to_bits(self.input_text.text())
 
             else:
                 self.output_text.setText(bit.text_from_bits(''.join(self.input_text.text().split(" "))))
+                self.tocopy = bit.text_from_bits(''.join(self.input_text.text().split(" ")))
 
     def change(self):
         self.key *= -1
@@ -143,6 +169,34 @@ class MyWidget(QMainWindow):
             self.mode.setText("Режим: Расшифровка")
         else:
             self.mode.setText("Режим: Шифрование")
+
+    def do_a_copy(self):
+        pyperclip.copy(self.tocopy)
+
+    def takeFromFile(self):
+        if self.key == 1:
+            trytofind = "public.pem"
+        elif self.key == -1:
+            trytofind = "private.pem"
+        self.filename = QFileDialog.getOpenFileName(self, f'Выберите файл с ключом', f'keys/{trytofind}', 'Файлы (*.pem)',)[0]
+        if self.key == 1:
+            with open(self.filename, mode='rb') as privatefile:
+                keydata = privatefile.read()
+            keydata = keydata.decode()
+            keydata = keydata.split("\r\n")
+            keydata.remove("-----BEGIN RSA PUBLIC KEY-----")
+            keydata.remove("-----END RSA PUBLIC KEY-----")
+            keydata = ''.join(keydata)
+        elif self.key == -1:
+            with open(self.filename, mode='rb') as privatefile:
+                keydata = privatefile.read()
+            keydata = keydata.decode()
+            keydata = keydata.split("\r\n")
+            keydata.remove("-----BEGIN RSA PRIVATE KEY-----")
+            keydata.remove("-----END RSA PRIVATE KEY-----")
+            keydata = ''.join(keydata)
+        self.keys.setText(keydata)
+
 
 
 class Dialog(QDialog):
