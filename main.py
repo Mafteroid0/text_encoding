@@ -2,17 +2,18 @@ import sys
 import os
 import bit
 import pyperclip
-from PyQt5 import uic
+from PyQt5 import uic, QtGui
 import vizer
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QLineEdit, QDialog, QFileDialog
 import rsacode1
 import rsa
-print("started")
 
 class MyWidget(QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('main.ui', self)  # Загружаем дизайн
+        uic.loadUi('main.ui', self)
+        self.setWindowIcon(QtGui.QIcon('logo.png'))
+        self.setWindowTitle('Шифрование и расшифровка информации')
         self.tocopy = ""
         self.do_2.clicked.connect(self.done)
         self.lang = "rus"
@@ -179,23 +180,24 @@ class MyWidget(QMainWindow):
         elif self.key == -1:
             trytofind = "private.pem"
         self.filename = QFileDialog.getOpenFileName(self, f'Выберите файл с ключом', f'keys/{trytofind}', 'Файлы (*.pem)',)[0]
-        if self.key == 1:
-            with open(self.filename, mode='rb') as privatefile:
-                keydata = privatefile.read()
-            keydata = keydata.decode()
-            keydata = keydata.split("\r\n")
-            keydata.remove("-----BEGIN RSA PUBLIC KEY-----")
-            keydata.remove("-----END RSA PUBLIC KEY-----")
-            keydata = ''.join(keydata)
-        elif self.key == -1:
-            with open(self.filename, mode='rb') as privatefile:
-                keydata = privatefile.read()
-            keydata = keydata.decode()
-            keydata = keydata.split("\r\n")
-            keydata.remove("-----BEGIN RSA PRIVATE KEY-----")
-            keydata.remove("-----END RSA PRIVATE KEY-----")
-            keydata = ''.join(keydata)
-        self.keys.setText(keydata)
+        if self.filename != "":
+            if self.key == 1:
+                with open(self.filename, mode='rb') as privatefile:
+                    keydata = privatefile.read()
+                keydata = keydata.decode()
+                keydata = keydata.split("\r\n")
+                keydata.remove("-----BEGIN RSA PUBLIC KEY-----")
+                keydata.remove("-----END RSA PUBLIC KEY-----")
+                keydata = ''.join(keydata)
+            elif self.key == -1:
+                with open(self.filename, mode='rb') as privatefile:
+                    keydata = privatefile.read()
+                keydata = keydata.decode()
+                keydata = keydata.split("\r\n")
+                keydata.remove("-----BEGIN RSA PRIVATE KEY-----")
+                keydata.remove("-----END RSA PRIVATE KEY-----")
+                keydata = ''.join(keydata)
+                self.keys.setText(keydata)
 
 
 
@@ -203,6 +205,8 @@ class Dialog(QDialog):
     def __init__(self, parent=None):
         super(Dialog, self).__init__(parent)
         uic.loadUi('dialog.ui', self)
+        self.setWindowTitle('Создание RSA ключа')
+        self.setWindowIcon(QtGui.QIcon('logo.png'))
         self.bitsize = 512
         self.generate_key.clicked.connect(self.save_keys)
         self.folder_open_button.clicked.connect(self.open_folder)
@@ -224,7 +228,6 @@ class Dialog(QDialog):
         self.max_sim.setText(f'Максимальный размер текста: {int((self.bitsize * 0.32) // 3 - 11)} символов ')
 
     def save_keys(self):
-        print("Начал сохранение")
         rsacode1.rsa_generate_keys(self.bitsize)
 
 if __name__ == '__main__':
