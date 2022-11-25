@@ -3,10 +3,8 @@ import os
 import bit
 import pyperclip
 from PyQt5 import uic, QtGui
-import vizer
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QLineEdit, QDialog, QFileDialog
-import rsacode1
-import rsa
+import rsacode1, vizer, atbash
 
 class MyWidget(QMainWindow):
     def __init__(self):
@@ -94,6 +92,15 @@ class MyWidget(QMainWindow):
             self.label_4.hide()
             self.takeff.hide()
 
+        elif self.method_list.currentIndex() == 4:
+            self.ru_radio.show()
+            self.en_radio.show()
+            self.label_3.hide()
+            self.keys.hide()
+            self.create_key_button.hide()
+            self.label_4.hide()
+            self.takeff.hide()
+
     def open_dialog(self):
         ex1 = Dialog(parent=self)
         ex1.show()
@@ -163,6 +170,15 @@ class MyWidget(QMainWindow):
             else:
                 self.output_text.setText(bit.text_from_bits(''.join(self.input_text.text().split(" "))))
                 self.tocopy = bit.text_from_bits(''.join(self.input_text.text().split(" ")))
+
+        elif self.method_list.currentIndex() == 4:
+            if self.lang == "eng":
+                self.lang = 'abcdefghijklmnopqrstuvwxyz'
+            else:
+                self.lang = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
+            print(atbash.atbash(self.input_text.text(), self.lang))
+            self.output_text.setText(atbash.atbash(self.input_text.text(), self.lang))
+            self.tocopy = atbash.atbash(self.input_text.text(), self.lang)
 
     def change(self):
         self.key *= -1

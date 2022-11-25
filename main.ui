@@ -59,6 +59,11 @@ color: rgb(255, 255, 255);font: 75 12pt &quot;Anonymous Pro Minus&quot;;</string
       <string>Двоичный код</string>
      </property>
     </item>
+    <item>
+     <property name="text">
+      <string>Шифр Атбаш</string>
+     </property>
+    </item>
    </widget>
    <widget class="QPushButton" name="mode">
     <property name="geometry">
